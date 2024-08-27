@@ -19,11 +19,11 @@ include_directories(include)
 include_directories(/usr/local/include/dynamixel_sdk)
 
 # build (auto_control)
-add_executable(auto_control src/dxl.cpp src/sub_error.cpp src/s_main.cpp)
+add_executable(auto_control src/dxl.cpp src/sub_error.cpp src/main.cpp)
 ament_target_dependencies(auto_control rclcpp std_msgs)
 target_link_libraries(auto_control dxl_x64_cpp)
 # build (direct_control)
-add_executable(direct_control src/dxl.cpp src/d_main.cpp)
+add_executable(direct_control src/dxl.cpp src/direct.cpp)
 ament_target_dependencies(direct_control rclcpp std_msgs)
 target_link_libraries(direct_control dxl_x64_cpp)
 

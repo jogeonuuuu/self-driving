@@ -9,9 +9,11 @@ void jetson::sub_callback(const std_msgs::msg::Int32::SharedPtr error)
             tf = !tf;
         }
     }
+    double gain = 0.33;
+    if(error->data >= 180) gain = 3.5;
 
-    int lmotor = (100 - (0.33 * error->data));
-    int rmotor = -(100 + (0.33 * error->data));
+    int lmotor = (100 - (gain * error->data));
+    int rmotor = -(100 + (gain * error->data));
     if(tf) dxl.setVelocity(lmotor, rmotor);
     
     RCLCPP_INFO(this->get_logger(), "error: %d", error->data);

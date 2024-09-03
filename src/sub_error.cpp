@@ -9,8 +9,9 @@ void jetson::sub_callback(const std_msgs::msg::Int32::SharedPtr error)
             tf = !tf;
         }
     }
-    double gain = 0.33;
-    if(error->data >= 180) gain = 3.5;
+    double gain = 1; //0.33
+    if(abs(error->data) == 180) gain = 5;
+    //if(abs(error->data) == 200) gain = 1;
 
     int lmotor = (100 - (gain * error->data));
     int rmotor = -(100 + (gain * error->data));

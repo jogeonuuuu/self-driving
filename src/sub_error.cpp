@@ -20,7 +20,7 @@ void jetson::sub_callback(const std_msgs::msg::Int32::SharedPtr error)
     RCLCPP_INFO(this->get_logger(), "motor: %d, %d", lmotor, rmotor);
 }
 
-jetson::jetson() : Node("errorSub_Node")
+jetson::jetson() : Node("control_Node")
 {
     if (!dxl.open()) {
         RCLCPP_ERROR(this->get_logger(), "dynamixel open error");
